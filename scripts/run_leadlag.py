@@ -114,11 +114,9 @@ def main(argv=None):
            "results": results, "leader_for": leader_for, "basis_bp": basis,
            "mid_changes": {f"{v}:{c}": int(len(LL.series_from_ticks(series[(v, c)][0], series[(v, c)][1], origin)[0])) for (v, c) in series}}
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
-    with open(args.out, "w", encoding="utf-8", newline="
-") as f:
+    with open(args.out, "w", encoding="utf-8", newline="\n") as f:
         json.dump(out, f, indent=1, default=float)
-    pd.DataFrame(curves).to_csv(args.curves, index=False, lineterminator="
-")
+    pd.DataFrame(curves).to_csv(args.curves, index=False, lineterminator="\n")
     print("leader_for", leader_for, f"({time.time() - t0:.0f} s) -> {args.out}")
 
 

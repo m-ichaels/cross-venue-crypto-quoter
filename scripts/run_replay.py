@@ -85,7 +85,7 @@ def main(argv=None):
     ap.add_argument("--base-latency", type=int, default=50)
     ap.add_argument("--queue-models", nargs="*", default=["naive_fifo", "power_prob", "risk_averse"])
     ap.add_argument("--c-delta", type=float, default=0.5)
-    ap.add_argument("--sens-c-delta", nargs="*", type=float, default=[0.25, 1.0])
+    ap.add_argument("--sens-c-delta", nargs="*", type=float, default=[0.25, 1.0, 2.0])
     ap.add_argument("--n-boot", type=int, default=2000)
     ap.add_argument("--hours", nargs="*", default=None)
     ap.add_argument("--quick", action="store_true", help="base configuration only")
@@ -154,8 +154,7 @@ def main(argv=None):
            "base_queue_model": base_qm, "leader_for": leader_for, "hours": hours, "fees_file": os.path.relpath(args.fees, ROOT),
            "passes": passes, "signal_effect": effect}
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
-    with open(args.out, "w", encoding="utf-8", newline="
-") as f:
+    with open(args.out, "w", encoding="utf-8", newline="\n") as f:
         json.dump(out, f, indent=1, default=float)
     print(f"done: {len(passes)} passes in {time.time() - t0:.0f} s -> {args.out}")
 

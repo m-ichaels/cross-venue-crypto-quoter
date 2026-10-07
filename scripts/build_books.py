@@ -38,8 +38,7 @@ def main(argv=None):
             continue
         reports += books.build_venue(args.raw, args.out, venue, files=files)
     os.makedirs(os.path.dirname(args.report), exist_ok=True)
-    with open(args.report, "w", encoding="utf-8", newline="
-") as f:
+    with open(args.report, "w", encoding="utf-8", newline="\n") as f:
         json.dump({"built_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "seconds": round(time.time() - t0, 1),
                    "hours": reports}, f, indent=1)
     print(f"done in {time.time() - t0:.0f} s -> {args.report}")

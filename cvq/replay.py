@@ -41,7 +41,7 @@ NS = 1_000_000_000
 
 class RestingOrder:
     __slots__ = ("side", "price", "pt", "remaining", "t_post", "t_eff", "qpos", "level_qty", "taken", "ahead", "ahead_qty",
-                 "queue_at_post", "mid_at_post", "sigma_bp", "delta_bp", "cancelling")
+                 "ahead_ever", "queue_at_post", "mid_at_post", "sigma_bp", "delta_bp", "cancelling")
 
     def __init__(self, side, price, remaining, t_post, t_eff, mid_at_post, sigma_bp, delta_bp):
         self.side, self.price, self.pt = side, price, int(round(price / TICK))
@@ -51,6 +51,9 @@ class RestingOrder:
         self.taken = 0.0            # size already executed through the queue model's negative front
         self.ahead = None           # l3_exact: {order_id: amount} ahead of us
         self.ahead_qty = 0.0
+        self.ahead_ever = None      # l3_exact: every id that was ahead of us when we joined (the live_orders and
+                                    # live_trades channels are not causally ordered: a maker ahead of us can be
+                                    # deleted before its trade print arrives, and that print is still not ours)
         self.queue_at_post = 0.0
         self.mid_at_post, self.sigma_bp, self.delta_bp = mid_at_post, sigma_bp, delta_bp
         self.cancelling = False
@@ -150,7 +153,7 @@ def run(derived: str, venue: str, prm: QuoterParams, queue_model: str = "naive_f
         if pt != o.pt:
             return
         if exact:
-            if o.ahead_qty <= 1e-12 or maker_id not in o.ahead:
+            if o.ahead_qty <= 1e-12 or maker_id not in o.ahead_ever:
                 record_fill(o, min(qty, o.remaining), o.price, t, "l3")
             return
         qm.trade(o.qpos, qty)
@@ -224,6 +227,7 @@ def run(derived: str, venue: str, prm: QuoterParams, queue_model: str = "naive_f
         if exact:
             d = oap.get((side, o.pt), {})
             o.ahead = dict(d)
+            o.ahead_ever = set(d.keys())
             o.ahead_qty = sum(d.values())
             o.queue_at_post = o.ahead_qty
         orders[side] = o
