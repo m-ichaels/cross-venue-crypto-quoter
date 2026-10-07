@@ -1,0 +1,116 @@
+Source: https://help.coinbase.com/en/exchange/trading-and-funding/exchange-fees  (text extract, read 2026-10-07)
+
+Exchange fees | Coinbase Help
+Exchange
+Exchange fees
+
+Disclaimer
+Coinbase does not guarantee price pegs and such pegs may fluctuate for reasons that include, but are not limited to, market conditions. When you place an order for Stablepairs, the maker will pay a fee of 0.00% and the taker will pay a fee as outlined in the Stablepair fee table below. 
+You can see which trading pairs are denoted as Stable Pairs by looking at the fx_stablecoin field of our 
+api.exchange.coinbase.com/products
+ endpoint.
+Trading Fees
+Coinbase Exchange uses a maker-taker fee model for determining its trading fees. Orders that provide liquidity (maker orders) are charged different fees than orders that take liquidity (taker orders). Fees are calculated based on the current pricing tier you are in when the order is placed, and not on the tier you would be in after a trade is completed. Your fee tier is based upon total USD trading volume over the trailing 30 day period. Total Volume does not include volume for trading 
+Stable Pairs
+. Transactions made on books quoted in USD, e.g. BTC-USD, are counted as the total USD amount of each filled order. Transactions made on non-USD books are converted to USD based on the most recent fill price on the respective book. For example the USD volume of a purchase of 1 ETH on the ETH-BTC book, will be immediately converted based on the most recent fill price on the ETH-USD book.
+When you place an order at the market price that gets filled immediately, you are considered a taker and will pay a fee between 0.04% and 0.60%. When you place an order which is not immediately matched by an existing order, that order is placed on the order book. If another customer places an order that matches yours, you are considered the maker and will pay a fee between 0.00% and 0.40%.
+When you place an order that gets partially matched immediately, you pay a taker fee for that portion. The remainder of the order is placed on the order book and, when matched, is considered a maker order. You pay a maker fee for this remaining portion of the total order.
+Please note that the pricing tiers can take some time to update. For future orders, we recommend checking your fee tier before you trade to ensure you are in the updated pricing tier.
+Tier
+Taker Fee
+Maker Fee
+$0K-$10K
+60bps
+40bps
+$10K-$50K
+40bps
+25bps
+$50K-$100K
+25bps
+15bps
+$100K-$1M
+20bps
+10bps
+$1M-$15M
+18bps
+8bps
+$15M-$75M
+16bps
+6bps
+$75M-$250M
+10bps
+3bps
+$250M-$400M
+6bps
+0bps
+$400M+
+4bps
+0bps
+Please note: These fees are only applicable to clients outside of our Liquidity Program. See here for the Liquidity Program 
+fees
+. 
+Stablepair Fees
+Stablepairs, or a price quotation between two cryptocurrencies where the price is designed to be pegged to an external reference such as USD (in the case of USDC) or BTC (in the case of WBTC), play an important role in the crypto ecosystem by allowing users to benefit from multiple funding options and instant settlement. When you place an order for Stablepairs, the maker will pay a fee of 0.00% and the taker will pay a fee as outlined in the fee table below. 
+Liquidity Program Tier
+Stablepair Taker Fee
+Tier 1
+0.10bps
+Tier 2
+0.15bps
+Tier 3
+0.20bps
+Tier 4
+0.30bps
+All other Exchange users
+0.45bps
+(Note: Effective May 1, 2025, USDT-USDC and USDT-USD will no longer receive stablepair fee pricing and will be assessed standard trading fees show above.)
+How are taker fees calculated?
+Your taker fees are based upon total USD trading volume over the trailing 30-day period across all order books. Transactions made on books quoted in USD, e.g. BTC-USD, are counted as the total USD amount of each filled order. 
+Transactions made on non-USD books are converted to USD based on the most recent fill price on the respective book. For example, a purchase of 1 ETH on the ETH-BTC book will be immediately converted to a USD equivalent based on the most recent fill price on the ETH-USD book.
+Fiat Deposit and Withdrawal Fees
+Deposit Fee
+Withdrawal Fee
+ACH
+Free
+Free
+Wire (USD)
+$10 USD
+$25 USD
+SEPA (EUR)
+€0.15 EUR
+Free
+Swift (USD)
+$25 USD
+$25 USD
+Swift (GBP)
+Free
+£1 GBP
+Miner Fees
+To ensure a smooth experience for our customers and reasonable transaction processing times, Coinbase Exchange will charge a fee based on our estimate of the network transaction fees that we anticipate paying for each transaction. In certain circumstances, the fee that Coinbase Exchange pays may differ from that estimate. All fees we charge will be disclosed at the time of your transaction.
+USDC to USD Conversion Fees
+Coinbase Exchange will assess a fee on USDC to USD net conversions in excess of $2 million per rolling 30-day period. 
+Conversion Fee Table Effective June 1, 2026
+Net Conversions*
+Standard Fees
+Up to $2 million
+0.0%
+>$2 million to $30 million
+0.03%
+>$30 million
+0.05%
+*Net conversion is calculated by subtracting the total USD or PYUSD to USDC conversion volume from the total USDC to USD or PYUSD conversion volume over the past 30 days and is combined across all related client accounts.
+Example:
+Your current 30-day net conversion volume: $20M (Total conversions: $50M – Mints: $30M).
+You convert $30M USDC to USD. Based on your L30D net conversion volume of $20M, you start in the 0.03% fee tier (>$2M to $30M).
+The first $10M of your $30M conversion is charged at 0.03%, since it brings your L30D net conversion volume to $30M.
+Fee: $10M × 0.03% = $3k
+The remaining $20M falls into the 0.05% fee tier (>$30M).
+Fee: $20M × 0.05% = $10k
+Total fee: $13k
+Please note: These fees are only applicable to clients outside of our Liquidity Program. See here for the Liquidity Program 
+fees
+. 
+USDC Exchange Loan Conversion Fee Exemption Credits
+For Exchange Loans taken in USDC, you will receive exemption credits equivalent to the loan amount. These credits waive 
+standard USDC to USD conversion fees
+ for any corresponding loan-related conversions for 30 days. Additionally, these conversions will not count toward the last 30 days’ net conversion volume used to determi

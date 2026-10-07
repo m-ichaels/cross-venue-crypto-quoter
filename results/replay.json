@@ -1,0 +1,1125 @@
+{
+ "built_utc": "2026-10-07T15:41:27Z",
+ "seconds": 4.2,
+ "params": {
+  "lot": 0.01,
+  "c_delta": 0.5,
+  "c_q": 0.25,
+  "T": 10.0,
+  "requote_tol_bp": 0.25,
+  "max_inventory": 5,
+  "decision_ms": 100,
+  "vol_halflife_s": 120.0,
+  "sigma0_bp": 0.5,
+  "basis_halflife_s": 600.0,
+  "episode_s": 900.0,
+  "signal": 0,
+  "latency_ms": 50
+ },
+ "base_queue_model": "naive_fifo",
+ "leader_for": {
+  "binance": "coinbase",
+  "coinbase": "binance",
+  "bitstamp": "coinbase"
+ },
+ "hours": [
+  "2026-10-07T15"
+ ],
+ "fees_file": "configs\\fees.json",
+ "passes": [
+  {
+   "key": "binance_sig0_lat50_naive_fifo_cd0.5",
+   "venue": "binance",
+   "signal": 0,
+   "latency_ms": 50,
+   "queue_model": "naive_fifo",
+   "c_delta": 0.5,
+   "leader": "coinbase",
+   "n_fills": 179,
+   "qty_filled_btc": 0.94,
+   "fills_per_hour": 401.4177946938598,
+   "n_episodes": 2,
+   "reasons": {
+    "queue": 92,
+    "through": 82,
+    "cross": 5
+   },
+   "median_age_s": 1.579,
+   "mean_abs_inventory_lots": 1.389206672415736,
+   "max_abs_inventory_lots": 5.0,
+   "markouts": {
+    "1s": {
+     "mean": -0.7904651205251799,
+     "lo": -0.8621565736473199,
+     "hi": -0.7439158120015551,
+     "n_fills": 179,
+     "n_episodes": 2
+    },
+    "10s": {
+     "mean": -1.7412574696028007,
+     "lo": -2.2147868288629424,
+     "hi": -1.433794539514869,
+     "n_fills": 179,
+     "n_episodes": 2
+    },
+    "60s": {
+     "mean": -1.7824185870887395,
+     "lo": -1.8706127935533057,
+     "hi": -1.646589054514913,
+     "n_fills": 179,
+     "n_episodes": 2
+    }
+   },
+   "tiers": {
+    "entry": {
+     "pnl": {
+      "mean": -11.873108366094918,
+      "lo": -11.983495434519122,
+      "hi": -11.801433968641396,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "spread": {
+      "mean": 0.3801350261954479,
+      "lo": 0.35825974438338226,
+      "hi": 0.3943386613257926,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "adverse": {
+      "mean": 2.1625536132841874,
+      "lo": 2.0048487988982955,
+      "hi": 2.2649514548790983,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "inventory": {
+      "mean": 0.09068977900617839,
+      "lo": -0.06917882491190917,
+      "hi": 0.3369063800042082,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "hold": {
+      "mean": -0.12212540709463456,
+      "lo": -0.24463005442853084,
+      "hi": 0.06654627160763804,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "liquidation": {
+      "mean": 0.212815186100813,
+      "lo": 0.17545122951662184,
+      "hi": 0.27036010839657004,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "fee": {
+      "mean": 10.0,
+      "lo": 10.0,
+      "hi": 10.000000000000002,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "label": "Regular user / VIP 0",
+     "maker_bp": 10.0,
+     "identity_gap_usd": 7.105427357601002e-15
+    },
+    "top": {
+     "pnl": {
+      "mean": -2.8092505371173955,
+      "lo": -2.8753306793249567,
+      "hi": -2.766344656528475,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "spread": {
+      "mean": 0.3801350261954479,
+      "lo": 0.35825974438338226,
+      "hi": 0.3943386613257926,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "adverse": {
+      "mean": 2.1625536132841874,
+      "lo": 2.0048487988982955,
+      "hi": 2.2649514548790983,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "inventory": {
+      "mean": -0.07316804997134359,
+      "lo": -0.20426813702483101,
+      "hi": 0.12874162481004373,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "hold": {
+      "mean": -0.12212540709463456,
+      "lo": -0.24463005442853084,
+      "hi": 0.06654627160763804,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "liquidation": {
+      "mean": 0.048957357123290884,
+      "lo": 0.04036191740369974,
+      "hi": 0.06219535320240563,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "fee": {
+      "mean": 1.1,
+      "lo": 1.1,
+      "hi": 1.1000000000000003,
+      "n_fills": 179,
+      "n_episodes": 2
+     },
+     "label": "VIP 9",
+     "maker_bp": 1.1,
+     "identity_gap_usd": 1.7763568394002505e-15
+    }
+   },
+   "stats": {
+    "decisions": 8954,
+    "placed": 782,
+    "cancelled": 684,
+    "rejected_post_only": 26,
+    "fills": 179,
+    "fill_reasons": {
+     "queue": 92,
+     "through": 82,
+     "cross": 5,
+     "depth": 0,
+     "l3": 0
+    },
+    "msgs": 66488,
+    "hours": 1,
+    "seconds": 0.5,
+    "lot": 0.01
+   }
+  },
+  {
+   "key": "binance_sig1_lat50_naive_fifo_cd0.5",
+   "venue": "binance",
+   "signal": 1,
+   "latency_ms": 50,
+   "queue_model": "naive_fifo",
+   "c_delta": 0.5,
+   "leader": "coinbase",
+   "n_fills": 107,
+   "qty_filled_btc": 0.5516300000000001,
+   "fills_per_hour": 239.95365381141337,
+   "n_episodes": 2,
+   "reasons": {
+    "queue": 53,
+    "through": 52,
+    "cross": 2
+   },
+   "median_age_s": 1.507,
+   "mean_abs_inventory_lots": 1.2639822255767532,
+   "max_abs_inventory_lots": 5.0,
+   "markouts": {
+    "1s": {
+     "mean": -0.8921729754491449,
+     "lo": -1.1105881896533867,
+     "hi": -0.7849004675307488,
+     "n_fills": 107,
+     "n_episodes": 2
+    },
+    "10s": {
+     "mean": -1.332897785978127,
+     "lo": -1.5414839877592104,
+     "hi": -1.2304527019039662,
+     "n_fills": 107,
+     "n_episodes": 2
+    },
+    "60s": {
+     "mean": -1.9640478914971626,
+     "lo": -2.167425432419455,
+     "hi": -1.8641609905388372,
+     "n_fills": 107,
+     "n_episodes": 2
+    }
+   },
+   "tiers": {
+    "entry": {
+     "pnl": {
+      "mean": -12.85425929369776,
+      "lo": -12.89645777867995,
+      "hi": -12.768339878599425,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "spread": {
+      "mean": 0.37866058939854513,
+      "lo": 0.3692251444228407,
+      "hi": 0.38329471641921753,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "adverse": {
+      "mean": 2.342708480895708,
+      "lo": 2.2474557069580547,
+      "hi": 2.5366505768422964,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "inventory": {
+      "mean": 0.8902114022005962,
+      "lo": 0.6009144461799695,
+      "hi": 1.0322967881411138,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "hold": {
+      "mean": -0.04575758942393791,
+      "lo": -0.31927933913443596,
+      "hi": 0.5111540807868833,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "liquidation": {
+      "mean": 0.9359689916245344,
+      "lo": 0.08976036539308607,
+      "hi": 1.35157612727555,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "fee": {
+      "mean": 10.000000000000002,
+      "lo": 10.0,
+      "hi": 10.000000000000002,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "label": "Regular user / VIP 0",
+     "maker_bp": 10.0,
+     "identity_gap_usd": 0.0
+    },
+    "top": {
+     "pnl": {
+      "mean": -3.233606564649373,
+      "lo": -3.7992285566702924,
+      "hi": -2.9558068251076723,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "spread": {
+      "mean": 0.37866058939854513,
+      "lo": 0.3692251444228407,
+      "hi": 0.38329471641921753,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "adverse": {
+      "mean": 2.342708480895708,
+      "lo": 2.2474557069580547,
+      "hi": 2.5366505768422964,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "inventory": {
+      "mean": 0.16955867315220985,
+      "lo": -0.008354165431164793,
+      "hi": 0.5318031242508368,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "hold": {
+      "mean": -0.04575758942393791,
+      "lo": -0.31927933913443596,
+      "hi": 0.5111540807868833,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "liquidation": {
+      "mean": 0.21531626257614775,
+      "lo": 0.020649043463953576,
+      "hi": 0.3109251737032711,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "fee": {
+      "mean": 1.1,
+      "lo": 1.1,
+      "hi": 1.1000000000000003,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "label": "VIP 9",
+     "maker_bp": 1.1,
+     "identity_gap_usd": 1.7763568394002505e-15
+    }
+   },
+   "stats": {
+    "decisions": 8954,
+    "placed": 1315,
+    "cancelled": 1257,
+    "rejected_post_only": 12,
+    "fills": 107,
+    "fill_reasons": {
+     "queue": 53,
+     "through": 52,
+     "cross": 2,
+     "depth": 0,
+     "l3": 0
+    },
+    "msgs": 66488,
+    "hours": 1,
+    "seconds": 0.4,
+    "lot": 0.01
+   }
+  },
+  {
+   "key": "coinbase_sig0_lat50_naive_fifo_cd0.5",
+   "venue": "coinbase",
+   "signal": 0,
+   "latency_ms": 50,
+   "queue_model": "naive_fifo",
+   "c_delta": 0.5,
+   "leader": "binance",
+   "n_fills": 211,
+   "qty_filled_btc": 1.9899999999999995,
+   "fills_per_hour": 480.6373941291261,
+   "n_episodes": 2,
+   "reasons": {
+    "through": 98,
+    "cross": 98,
+    "queue": 15
+   },
+   "median_age_s": 0.885141,
+   "mean_abs_inventory_lots": 0.9546674570514975,
+   "max_abs_inventory_lots": 5.0,
+   "markouts": {
+    "1s": {
+     "mean": -0.4835430269191883,
+     "lo": -0.5860510111882963,
+     "hi": -0.43603760511262357,
+     "n_fills": 211,
+     "n_episodes": 2
+    },
+    "10s": {
+     "mean": -0.5603481013526445,
+     "lo": -0.9931242741360624,
+     "hi": -0.3597860204328383,
+     "n_fills": 211,
+     "n_episodes": 2
+    },
+    "60s": {
+     "mean": -0.7226534321870667,
+     "lo": -0.9757886652456721,
+     "hi": -0.6053426089736976,
+     "n_fills": 211,
+     "n_episodes": 2
+    }
+   },
+   "tiers": {
+    "entry": {
+     "pnl": {
+      "mean": -40.87792349408232,
+      "lo": -41.76943521289793,
+      "hi": -40.46476894275831,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "spread": {
+      "mean": 0.22402796084293639,
+      "lo": 0.12904224905644748,
+      "hi": 0.26804732515087154,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "adverse": {
+      "mean": 0.946681393030003,
+      "lo": 0.8733899341245691,
+      "hi": 1.1048309143021198,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "inventory": {
+      "mean": 0.15527006189525386,
+      "lo": -0.14057366621538342,
+      "hi": 0.7936465476522677,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "hold": {
+      "mean": -0.14637158796983873,
+      "lo": -0.15888243935053503,
+      "hi": -0.1405736662153835,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "liquidation": {
+      "mean": 0.30164164986509273,
+      "lo": 1.5301737854522729e-16,
+      "hi": 0.9525289870028029,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "fee": {
+      "mean": 39.99999999999999,
+      "lo": 39.99999999999999,
+      "hi": 40.0,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "label": "$0K-$10K",
+     "maker_bp": 40.0,
+     "identity_gap_usd": 5.684341886080802e-14
+    },
+    "top": {
+     "pnl": {
+      "mean": -0.5963941129719437,
+      "lo": -0.8804170805527267,
+      "hi": -0.4647689427583142,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "spread": {
+      "mean": 0.22402796084293639,
+      "lo": 0.12904224905644748,
+      "hi": 0.26804732515087154,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "adverse": {
+      "mean": 0.946681393030003,
+      "lo": 0.8733899341245691,
+      "hi": 1.1048309143021198,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "inventory": {
+      "mean": -0.12625931921512318,
+      "lo": -0.1405736662153835,
+      "hi": -0.09537158469294563,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "hold": {
+      "mean": -0.14637158796983873,
+      "lo": -0.15888243935053503,
+      "hi": -0.1405736662153835,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "liquidation": {
+      "mean": 0.02011226875471558,
+      "lo": 1.0202593124801492e-17,
+      "hi": 0.06351085465758934,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "fee": {
+      "mean": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n_fills": 211,
+      "n_episodes": 2
+     },
+     "label": "$400M+",
+     "maker_bp": 0.0,
+     "identity_gap_usd": 8.881784197001252e-16
+    }
+   },
+   "stats": {
+    "decisions": 8718,
+    "placed": 1526,
+    "cancelled": 1323,
+    "rejected_post_only": 50,
+    "fills": 211,
+    "fill_reasons": {
+     "queue": 15,
+     "through": 98,
+     "cross": 98,
+     "depth": 0,
+     "l3": 0
+    },
+    "msgs": 20265,
+    "hours": 1,
+    "seconds": 0.3,
+    "lot": 0.01
+   }
+  },
+  {
+   "key": "coinbase_sig1_lat50_naive_fifo_cd0.5",
+   "venue": "coinbase",
+   "signal": 1,
+   "latency_ms": 50,
+   "queue_model": "naive_fifo",
+   "c_delta": 0.5,
+   "leader": "binance",
+   "n_fills": 240,
+   "qty_filled_btc": 2.3200000000000003,
+   "fills_per_hour": 546.6965620426079,
+   "n_episodes": 2,
+   "reasons": {
+    "cross": 124,
+    "through": 101,
+    "queue": 15
+   },
+   "median_age_s": 1.0049455,
+   "mean_abs_inventory_lots": 1.3990259706775432,
+   "max_abs_inventory_lots": 5.0,
+   "markouts": {
+    "1s": {
+     "mean": -0.6644194142906955,
+     "lo": -0.9308854389556858,
+     "hi": -0.5267767185536696,
+     "n_fills": 240,
+     "n_episodes": 2
+    },
+    "10s": {
+     "mean": -0.6695027162275895,
+     "lo": -1.3075826517917128,
+     "hi": -0.33990331406300694,
+     "n_fills": 240,
+     "n_episodes": 2
+    },
+    "60s": {
+     "mean": -0.48500916322569254,
+     "lo": -0.5062191909562149,
+     "hi": -0.44394812658932425,
+     "n_fills": 240,
+     "n_episodes": 2
+    }
+   },
+   "tiers": {
+    "entry": {
+     "pnl": {
+      "mean": -41.4407343831015,
+      "lo": -42.74995707062538,
+      "hi": -40.764457021822814,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "spread": {
+      "mean": 0.15339608927433693,
+      "lo": 0.04931584690651415,
+      "hi": 0.2071586098451343,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "adverse": {
+      "mean": 0.6384052525000296,
+      "lo": 0.49326397349583834,
+      "hi": 0.7133778008013494,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "inventory": {
+      "mean": 0.95572521987581,
+      "lo": 0.2582378308666056,
+      "hi": 2.306008944036052,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "hold": {
+      "mean": -0.07902503212691214,
+      "lo": -0.13381492626114627,
+      "hi": 0.027044129070413456,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "liquidation": {
+      "mean": 1.0347502520027223,
+      "lo": 0.3920527571277519,
+      "hi": 2.2789648149656387,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "fee": {
+      "mean": 40.00000000000001,
+      "lo": 40.0,
+      "hi": 40.00000000000001,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "label": "$0K-$10K",
+     "maker_bp": 40.0,
+     "identity_gap_usd": 1.1368683772161603e-13
+    },
+    "top": {
+     "pnl": {
+      "mean": -0.47497717571425524,
+      "lo": -0.6229445900327562,
+      "hi": -0.3985447907089193,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "spread": {
+      "mean": 0.15339608927433693,
+      "lo": 0.04931584690651415,
+      "hi": 0.2071586098451343,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "adverse": {
+      "mean": 0.6384052525000296,
+      "lo": 0.49326397349583834,
+      "hi": 0.7133778008013494,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "inventory": {
+      "mean": -0.010031987511437395,
+      "lo": -0.10767440024729577,
+      "hi": 0.17899646344343195,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "hold": {
+      "mean": -0.07902503212691214,
+      "lo": -0.13381492626114627,
+      "hi": 0.027044129070413456,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "liquidation": {
+      "mean": 0.06899304461547472,
+      "lo": 0.026140526013850397,
+      "hi": 0.15195233437301864,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "fee": {
+      "mean": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n_fills": 240,
+      "n_episodes": 2
+     },
+     "label": "$400M+",
+     "maker_bp": 0.0,
+     "identity_gap_usd": 8.881784197001252e-16
+    }
+   },
+   "stats": {
+    "decisions": 8718,
+    "placed": 979,
+    "cancelled": 743,
+    "rejected_post_only": 89,
+    "fills": 240,
+    "fill_reasons": {
+     "queue": 15,
+     "through": 101,
+     "cross": 124,
+     "depth": 0,
+     "l3": 0
+    },
+    "msgs": 20265,
+    "hours": 1,
+    "seconds": 0.3,
+    "lot": 0.01
+   }
+  },
+  {
+   "key": "bitstamp_sig0_lat50_naive_fifo_cd0.5",
+   "venue": "bitstamp",
+   "signal": 0,
+   "latency_ms": 50,
+   "queue_model": "naive_fifo",
+   "c_delta": 0.5,
+   "leader": "coinbase",
+   "n_fills": 138,
+   "qty_filled_btc": 1.2903232176211459,
+   "fills_per_hour": 237.04800794740663,
+   "n_episodes": 3,
+   "reasons": {
+    "cross": 107,
+    "queue": 16,
+    "through": 15
+   },
+   "median_age_s": 2.431,
+   "mean_abs_inventory_lots": 0.9035051102672201,
+   "max_abs_inventory_lots": 3.0000000000000004,
+   "markouts": {
+    "1s": {
+     "mean": -0.9252931752788549,
+     "lo": -1.0557013285206085,
+     "hi": -0.6001109519769768,
+     "n_fills": 138,
+     "n_episodes": 3
+    },
+    "10s": {
+     "mean": -1.0586918856155045,
+     "lo": -1.3517206564580466,
+     "hi": -0.7126590552269843,
+     "n_fills": 138,
+     "n_episodes": 3
+    },
+    "60s": {
+     "mean": -1.1826877383904875,
+     "lo": -1.4075025622476258,
+     "hi": -0.7360763082818479,
+     "n_fills": 133,
+     "n_episodes": 3
+    }
+   },
+   "tiers": {
+    "entry": {
+     "pnl": {
+      "mean": -32.65154025324996,
+      "lo": -33.946573052115724,
+      "hi": -32.09629055945897,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "spread": {
+      "mean": -0.3728968060490766,
+      "lo": -0.47003643554829905,
+      "hi": -0.13366573157279765,
+      "n_fills": 138,
+      "n_episodes": 3
+     },
+     "adverse": {
+      "mean": 0.8013451356445979,
+      "lo": 0.6086856870537473,
+      "hi": 0.9701270704205097,
+      "n_fills": 133,
+      "n_episodes": 3
+     },
+     "inventory": {
+      "mean": 1.361285316746467,
+      "lo": 0.9718308435167996,
+      "hi": 2.2696267748999945,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "hold": {
+      "mean": -0.2394844638046108,
+      "lo": -0.3978160157701217,
+      "hi": -0.1715992752415875,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "liquidation": {
+      "mean": 1.540555435867623,
+      "lo": 1.1434301187583873,
+      "hi": 2.2319269357305114,
+      "n_fills": 138,
+      "n_episodes": 3
+     },
+     "fee": {
+      "mean": 30.0,
+      "lo": 29.999999999999993,
+      "hi": 30.000000000000007,
+      "n_fills": 138,
+      "n_episodes": 3
+     },
+     "label": "< $10K",
+     "maker_bp": 30.0,
+     "identity_gap_usd": 3.22064045236107
+    },
+    "top": {
+     "pnl": {
+      "mean": -1.1708504966617397,
+      "lo": -1.479225610412185,
+      "hi": -1.0386336233650466,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "spread": {
+      "mean": -0.3728968060490766,
+      "lo": -0.47003643554829905,
+      "hi": -0.13366573157279765,
+      "n_fills": 138,
+      "n_episodes": 3
+     },
+     "adverse": {
+      "mean": 0.8013451356445979,
+      "lo": 0.6086856870537473,
+      "hi": 0.9701270704205097,
+      "n_fills": 133,
+      "n_episodes": 3
+     },
+     "inventory": {
+      "mean": -0.11940443984175637,
+      "lo": -0.19772066680354713,
+      "hi": -0.08582609257712663,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "hold": {
+      "mean": -0.2394844638046108,
+      "lo": -0.3978160157701217,
+      "hi": -0.1715992752415875,
+      "n_fills": 107,
+      "n_episodes": 2
+     },
+     "liquidation": {
+      "mean": 0.11556310107945171,
+      "lo": 0.08577318266446073,
+      "hi": 0.16742558426940973,
+      "n_fills": 138,
+      "n_episodes": 3
+     },
+     "fee": {
+      "mean": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n_fills": 138,
+      "n_episodes": 3
+     },
+     "label": "$1B+",
+     "maker_bp": 0.0,
+     "identity_gap_usd": 0.24159278904549386
+    }
+   },
+   "stats": {
+    "decisions": 13872,
+    "placed": 1047,
+    "cancelled": 912,
+    "rejected_post_only": 25,
+    "fills": 138,
+    "fill_reasons": {
+     "queue": 16,
+     "through": 15,
+     "cross": 107,
+     "depth": 0,
+     "l3": 0
+    },
+    "msgs": 324004,
+    "hours": 1,
+    "seconds": 0.5,
+    "lot": 0.01
+   }
+  },
+  {
+   "key": "bitstamp_sig1_lat50_naive_fifo_cd0.5",
+   "venue": "bitstamp",
+   "signal": 1,
+   "latency_ms": 50,
+   "queue_model": "naive_fifo",
+   "c_delta": 0.5,
+   "leader": "coinbase",
+   "n_fills": 46,
+   "qty_filled_btc": 0.44000000000000006,
+   "fills_per_hour": 79.01600264913554,
+   "n_episodes": 3,
+   "reasons": {
+    "cross": 37,
+    "queue": 5,
+    "through": 4
+   },
+   "median_age_s": 0.6925,
+   "mean_abs_inventory_lots": 1.7705562019674246,
+   "max_abs_inventory_lots": 5.000000000000001,
+   "markouts": {
+    "1s": {
+     "mean": -0.6224305988143438,
+     "lo": -0.8756324460365793,
+     "hi": -0.5239889171881504,
+     "n_fills": 46,
+     "n_episodes": 3
+    },
+    "10s": {
+     "mean": -0.8968476736803325,
+     "lo": -1.5295564005900995,
+     "hi": -0.6546320402078212,
+     "n_fills": 46,
+     "n_episodes": 3
+    },
+    "60s": {
+     "mean": -1.9669465881983919,
+     "lo": -10.370903500945108,
+     "hi": -0.7798163006511261,
+     "n_fills": 46,
+     "n_episodes": 3
+    }
+   },
+   "tiers": {
+    "entry": {
+     "pnl": {
+      "mean": -37.189329827383176,
+      "lo": -38.40426281953427,
+      "hi": -32.482563728787994,
+      "n_fills": 41,
+      "n_episodes": 2
+     },
+     "spread": {
+      "mean": -0.2945572060594442,
+      "lo": -0.31203922232477627,
+      "hi": -0.21893821852562262,
+      "n_fills": 46,
+      "n_episodes": 3
+     },
+     "adverse": {
+      "mean": 1.6723893821389477,
+      "lo": 0.4677770783263499,
+      "hi": 10.151965282419482,
+      "n_fills": 46,
+      "n_episodes": 3
+     },
+     "inventory": {
+      "mean": 6.30057561941599,
+      "lo": 1.1717736947138069,
+      "hi": 7.6244465188831425,
+      "n_fills": 41,
+      "n_episodes": 2
+     },
+     "hold": {
+      "mean": 1.1694109919961566,
+      "lo": 1.1688011198626813,
+      "hi": 1.1717736947138069,
+      "n_fills": 41,
+      "n_episodes": 2
+     },
+     "liquidation": {
+      "mean": 9.105230738691699,
+      "lo": 4.257640376540964,
+      "hi": 40.081038933861706,
+      "n_fills": 46,
+      "n_episodes": 3
+     },
+     "fee": {
+      "mean": 30.000000000000004,
+      "lo": 29.999999999999996,
+      "hi": 30.000000000000004,
+      "n_fills": 46,
+      "n_episodes": 3
+     },
+     "label": "< $10K",
+     "maker_bp": 30.0,
+     "identity_gap_usd": 16.64107099999951
+    },
+    "top": {
+     "pnl": {
+      "mean": -2.443074005187931,
+      "lo": -2.482563728787991,
+      "hi": -2.432880728732796,
+      "n_fills": 41,
+      "n_episodes": 2
+     },
+     "spread": {
+      "mean": -0.2945572060594442,
+      "lo": -0.31203922232477627,
+      "hi": -0.21893821852562262,
+      "n_fills": 46,
+      "n_episodes": 3
+     },
+     "adverse": {
+      "mean": 1.6723893821389477,
+      "lo": 0.4677770783263499,
+      "hi": 10.151965282419482,
+      "n_fills": 46,
+      "n_episodes": 3
+     },
+     "inventory": {
+      "mean": 1.5543197972207456,
+      "lo": 1.1717736947138069,
+      "hi": 1.65306442808167,
+      "n_fills": 41,
+      "n_episodes": 2
+     },
+     "hold": {
+      "mean": 1.1694109919961566,
+      "lo": 1.1688011198626813,
+      "hi": 1.1717736947138069,
+      "n_fills": 41,
+      "n_episodes": 2
+     },
+     "liquidation": {
+      "mean": 0.6830189710653752,
+      "lo": 0.3193823214427662,
+      "hi": 3.0066348998298777,
+      "n_fills": 46,
+      "n_episodes": 3
+     },
+     "fee": {
+      "mean": 0.0,
+      "lo": 0.0,
+      "hi": 0.0,
+      "n_fills": 46,
+      "n_episodes": 3
+     },
+     "label": "$1B+",
+     "maker_bp": 0.0,
+     "identity_gap_usd": 1.2483115749995055
+    }
+   },
+   "stats": {
+    "decisions": 13872,
+    "placed": 1410,
+    "cancelled": 1362,
+    "rejected_post_only": 34,
+    "fills": 46,
+    "fill_reasons": {
+     "queue": 5,
+     "through": 4,
+     "cross": 37,
+     "depth": 0,
+     "l3": 0
+    },
+    "msgs": 324004,
+    "hours": 1,
+    "seconds": 0.5,
+    "lot": 0.01
+   }
+  }
+ ],
+ "signal_effect": {
+  "binance": {
+   "entry": {
+    "diff": -0.9811509276028421,
+    "lo": -1.0950238100385548,
+    "hi": -0.7848444440803028,
+    "n_episodes": 2
+   },
+   "top": {
+    "diff": -0.42435602753197754,
+    "lo": -0.9238978773453357,
+    "hi": -0.1894621685791975,
+    "n_episodes": 2
+   },
+   "adverse_60s": {
+    "diff": 0.18015486761152077,
+    "lo": -0.01749574792104358,
+    "hi": 0.531801777944001,
+    "n_episodes": 2
+   }
+  },
+  "coinbase": {
+   "entry": {
+    "diff": -0.5628108890191825,
+    "lo": -0.9805218577274459,
+    "hi": -0.29968807906450223,
+    "n_episodes": 2
+   },
+   "top": {
+    "diff": 0.12141693725768843,
+    "lo": 0.06622415204939491,
+    "hi": 0.25747249051997056,
+    "n_episodes": 2
+   },
+   "adverse_60s": {
+    "diff": -0.30827614052997343,
+    "lo": -0.6115669408062814,
+    "hi": -0.16001213332321973,
+    "n_episodes": 2
+   }
+  },
+  "bitstamp": {
+   "entry": {
+    "diff": -4.537789574133214,
+    "lo": -6.307972260075296,
+    "hi": 1.4640093233277298,
+    "n_episodes": 2
+   },
+   "top": {
+    "diff": -1.2722235085261915,
+    "lo": -1.3942471053677492,
+    "hi": -1.003338118375806,
+    "n_episodes": 2
+   },
+   "adverse_60s": {
+    "diff": 0.8710442464943499,
+    "lo": -0.26773093292974137,
+    "hi": 9.543279595365735,
+    "n_episodes": 3
+   }
+  }
+ }
+}

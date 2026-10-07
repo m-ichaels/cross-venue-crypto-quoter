@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cvq"
+version = "0.1.0"
+description = "cross-venue-crypto-quoter: what a one-lot inventory-skewed passive quoter earns per fill on the Binance, Coinbase and Bitstamp BTC spot books by maker-fee tier, and what re-marking the quote off the leading venue adds - replay with queue-position fills on self-recorded order-book data"
+requires-python = ">=3.10"
+dependencies = ["numpy", "pandas", "pyarrow", "scipy", "matplotlib", "requests", "websockets"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools]
+packages = ["cvq", "cvq.vendor"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
