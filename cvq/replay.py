@@ -248,9 +248,10 @@ def run(derived: str, venue: str, prm: QuoterParams, queue_model: str = "naive_f
             while p_lead + 1 < len(lead_ts) and lead_ts[p_lead + 1] <= seen:
                 p_lead += 1
             if p_lead >= 0:
+                # the leader's mid re-based by the trailing cross-venue difference (on the first decision b is the
+                # current difference itself, so m_ref starts at the own mid)
                 b = basis.update(seen / NS, lead_mid[p_lead] - mid)
-                if seen / NS - (basis.last_t if basis.last_t is not None else seen / NS) >= 0 and basis.v is not None:
-                    m_ref = lead_mid[p_lead] - b
+                m_ref = lead_mid[p_lead] - b
         q_lots = inv / lot
         sigma = vol.sigma_bp
         tb, ta, delta, kappa = target_quotes(m_ref, q_lots, sigma, bid, ask, prm)

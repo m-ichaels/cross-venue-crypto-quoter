@@ -127,6 +127,20 @@ def build_values():
             p = S.find(passes, v, 0, lat, qm, c)
             V[f"{v}_top_cd{c:g}"] = S.ci(p["tiers"]["top"]["pnl"]) if p else "—"
             V[f"{v}_fph_cd{c:g}"] = f"{p['fills_per_hour']:.0f}" if p else "—"
+    # ---- verdict sentences computed from the intervals rather than asserted
+    base0 = {v: S.find(passes, v, 0, lat, qm, cd) for v in VENUES}
+    ent = [base0[v]["tiers"]["entry"]["pnl"] for v in VENUES if base0[v]]
+    if ent and all(b["hi"] < 0 for b in ent):
+        V["entry_verdict"] = "At the entry maker tier every venue loses money per fill"
+    else:
+        V["entry_verdict"] = "At the entry maker tier the per-fill P&L is"
+    mo = [base0[v]["markouts"].get("60s", {}) for v in VENUES if base0[v]]
+    if mo and all(np.isfinite(b.get("hi", np.nan)) and b["hi"] < 0 for b in mo):
+        V["adverse_verdict"] = "The fills are adversely selected on every venue"
+    elif mo and any(np.isfinite(b.get("hi", np.nan)) and b["hi"] < 0 for b in mo):
+        V["adverse_verdict"] = "The fills are adversely selected on " + ", ".join(NAME[v] for v in VENUES if base0[v] and base0[v]["markouts"].get("60s", {}).get("hi", 0) < 0) + " and not measurably on the rest"
+    else:
+        V["adverse_verdict"] = "The 60 s mark-outs of the fills are not measurably negative"
     # ---- how much the queue model moves the top-tier answer (own mid, base latency and width)
     parts = []
     for v in VENUES:
