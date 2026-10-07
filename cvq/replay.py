@@ -115,14 +115,14 @@ def run(derived: str, venue: str, prm: QuoterParams, queue_model: str = "naive_f
     def mid_now():
         return 0.5 * (cur_bid + cur_ask) if cur_bid is not None and cur_ask is not None else None
 
-    def record_fill(o: RestingOrder, qty: float, price: float, t: int, reason: str):
+    def record_fill(o: RestingOrder, qty: float, price: float, t: int, reason: str, mid_ref=None):
         nonlocal inv
         if qty <= 1e-12:
             return
         sgn = 1 if o.side == 0 else -1
         inv += sgn * qty
         o.remaining -= qty
-        m = mid_now()
+        m = mid_now() if mid_ref is None else mid_ref
         fills.append((t, sgn, price, qty, m if m is not None else np.nan, inv / lot, episode_id, reason, (t - o.t_eff) / NS,
                       o.queue_at_post, o.mid_at_post, o.sigma_bp, o.delta_bp, o.level_qty))
         stats["fills"] += 1
@@ -197,14 +197,16 @@ def run(derived: str, venue: str, prm: QuoterParams, queue_model: str = "naive_f
             if o.ahead_qty < 1e-12:
                 o.ahead_qty = 0.0
 
-    def cross_check(t: int):
+    def cross_check(t: int, mid_before):
+        """The opposite best moved to or through our price: filled in full, marked against the mid before the jump
+        (the same convention as a trade printing through us, whose mid is the pre-trade one)."""
         for side in (0, 1):
             o = orders[side]
             if o is None or t < o.t_eff:
                 continue
             if (side == 0 and cur_ask is not None and cur_ask <= o.price + 1e-9) or \
                (side == 1 and cur_bid is not None and cur_bid >= o.price - 1e-9):
-                record_fill(o, o.remaining, o.price, t, "cross")
+                record_fill(o, o.remaining, o.price, t, "cross", mid_before)
 
     def place_effective(t: int, side: int, price: float, mid_at_post, sigma_bp, delta_bp, t_post):
         if cur_bid is None or cur_ask is None:
@@ -363,9 +365,10 @@ def run(derived: str, venue: str, prm: QuoterParams, queue_model: str = "naive_f
                     on_trade(t, p, q, a_, mk)
             bq = bb_by_msg.get(i)
             if bq is not None:
+                mid_before = mid_now()
                 cur_bid, cur_ask = bq
                 if orders[0] is not None or orders[1] is not None:
-                    cross_check(t)
+                    cross_check(t, mid_before if mid_before is not None else mid_now())
             stats["msgs"] += 1
         if log:
             log(f"  {venue} {hour}: fills so far {stats['fills']}, inv {inv / lot:.2f} lots, {time.time() - t_start:.0f} s")

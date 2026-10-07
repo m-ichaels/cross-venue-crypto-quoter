@@ -27,15 +27,13 @@ def utc(ns):
 
 
 def sign_word(b, unit="bp"):
-    """'earns 0.3 bp [0.1, 0.5]' / 'loses 1.2 bp [...]' / 'is within noise of zero (…)' from a bootstrap dict."""
+    """'nets +0.3 [+0.1, +0.5] bp' / 'nets -1.2 [...] bp' / 'nets -0.1 [...] bp, indistinguishable from zero'."""
     if not b or not np.isfinite(b.get("mean", np.nan)):
         return "—"
-    s = S.ci(b)
-    if b["lo"] > 0:
-        return f"earns {s} {unit}"
-    if b["hi"] < 0:
-        return f"loses {s} {unit}"
-    return f"is indistinguishable from zero ({s} {unit})"
+    s = f"{b['mean']:+.2f} [{b['lo']:+.2f}, {b['hi']:+.2f}]"
+    if b["lo"] > 0 or b["hi"] < 0:
+        return f"nets {s} {unit}"
+    return f"nets {s} {unit}, indistinguishable from zero"
 
 
 def effect_word(d):
@@ -129,6 +127,14 @@ def build_values():
             p = S.find(passes, v, 0, lat, qm, c)
             V[f"{v}_top_cd{c:g}"] = S.ci(p["tiers"]["top"]["pnl"]) if p else "—"
             V[f"{v}_fph_cd{c:g}"] = f"{p['fills_per_hour']:.0f}" if p else "—"
+    # ---- how much the queue model moves the top-tier answer (own mid, base latency and width)
+    parts = []
+    for v in VENUES:
+        vals = [S.find(passes, v, 0, lat, q, cd) for q in ("naive_fifo", "power_prob", "risk_averse", "l3_exact")]
+        vals = [x["tiers"]["top"]["pnl"]["mean"] for x in vals if x]
+        if len(vals) >= 2:
+            parts.append(f"{max(vals) - min(vals):.2f} bp on {NAME[v]}")
+    V["qm_spread_sentence"] = ("the choice of queue-position model moves the top-tier figure by at most " + ", ".join(parts)) if parts else "the queue-model sensitivity was not run"
     # ---- lead-lag
     for r in ll["results"]:
         key = f"ll_{r['x']}_{r['y']}_{r['variant']}"
@@ -152,11 +158,13 @@ def build_values():
     def verdict(r):
         a, b = NAME[r["x"]], NAME[r["y"]]
         th = r["theta_star"] * 1000
+        llr = f"LLR {r['llr']:.2f} [{r['llr_lo']:.2f}, {r['llr_hi']:.2f}]"
+        tstar = f"θ* = {th:+.0f} ms [{r['theta_lo'] * 1000:+.0f}, {r['theta_hi'] * 1000:+.0f}], positive meaning {a} first"
         if r["llr_lo"] > 1:
-            return f"{a} leads {b} by {th:.0f} ms (LLR {r['llr']:.2f} [{r['llr_lo']:.2f}, {r['llr_hi']:.2f}])"
+            return f"{a} leads {b} ({llr}; {tstar})"
         if r["llr_hi"] < 1:
-            return f"{b} leads {a} by {-th:.0f} ms (LLR {r['llr']:.2f} [{r['llr_lo']:.2f}, {r['llr_hi']:.2f}])"
-        return f"{a} and {b} are not separable (θ* {th:.0f} ms, LLR {r['llr']:.2f} [{r['llr_lo']:.2f}, {r['llr_hi']:.2f}])"
+            return f"{b} leads {a} ({llr}; {tstar})"
+        return f"{a} and {b} are not separable ({llr}; {tstar})"
     V["ll_verdict_exchange"] = "; ".join(verdict(r) for r in ex.values())
     V["ll_verdict_receive"] = "; ".join(verdict(r) for r in rc.values())
     # ---- tables from the summary renderer

@@ -154,7 +154,8 @@ def main(argv=None):
            "base_queue_model": base_qm, "leader_for": leader_for, "hours": hours, "fees_file": os.path.relpath(args.fees, ROOT),
            "passes": passes, "signal_effect": effect}
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
-    with open(args.out, "w", encoding="utf-8") as f:
+    with open(args.out, "w", encoding="utf-8", newline="
+") as f:
         json.dump(out, f, indent=1, default=float)
     print(f"done: {len(passes)} passes in {time.time() - t0:.0f} s -> {args.out}")
 
