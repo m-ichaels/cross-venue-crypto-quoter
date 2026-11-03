@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""README.md from scripts/README.template.md and the results files, so every number in the README is the run's.
+"""README.md and docs/method.md from scripts/README.template.md, scripts/METHOD.template.md and the results files,
+so every number in them is the run's.
 
     python scripts/readme.py [--check]     (--check renders without writing and fails on an unfilled placeholder)
 """
@@ -212,24 +213,30 @@ def build_values():
     return V
 
 
+TEMPLATES = (("README.template.md", "README.md"), ("METHOD.template.md", os.path.join("docs", "method.md")))
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--check", action="store_true")
     args = ap.parse_args(argv)
     V = build_values()
-    with open(os.path.join(ROOT, "scripts", "README.template.md"), encoding="utf-8") as fh:
-        tpl = fh.read()
-    out = re.sub(r"\{\{(\w+)\}\}", lambda m: V.get(m.group(1), m.group(0)), tpl)
-    left = sorted(set(re.findall(r"\{\{(\w+)\}\}", out)))
-    if left:
-        print("unfilled placeholders:", ", ".join(left))
-        sys.exit(1)
-    if args.check:
-        print(f"README renders: {len(out.splitlines())} lines, {len(V)} values")
-        return
-    with open(os.path.join(ROOT, "README.md"), "w", encoding="utf-8", newline="\n") as fh:
-        fh.write(out)
-    print("wrote README.md")
+    for src, dst in TEMPLATES:
+        with open(os.path.join(ROOT, "scripts", src), encoding="utf-8") as fh:
+            tpl = fh.read()
+        out = re.sub(r"\{\{(\w+)\}\}", lambda m: V.get(m.group(1), m.group(0)), tpl)
+        left = sorted(set(re.findall(r"\{\{(\w+)\}\}", out)))
+        if left:
+            print(f"{dst}: unfilled placeholders:", ", ".join(left))
+            sys.exit(1)
+        if args.check:
+            print(f"{dst} renders: {len(out.splitlines())} lines, {len(V)} values")
+            continue
+        path = os.path.join(ROOT, dst)
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf-8", newline="\n") as fh:
+            fh.write(out)
+        print(f"wrote {dst}")
 
 
 if __name__ == "__main__":
